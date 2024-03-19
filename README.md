@@ -1,8 +1,8 @@
 # Real-time Crawlers - an interview task
 
 ### Requirements
-* docker
-* docker-compose
+* docker `>=23.0.5`
+* docker-compose `>=2.24.6`
 ## How to run
 To run type `docker-compose up` and the API will be exposed at the `3000` port.
 
@@ -19,9 +19,12 @@ The simulation runs in cycles lasting 5 minutes. After that time the state is cl
 simulation starts over with new set of sport events.
 
 Your task is to implement a TypeScript application that:
-1. consumes data from the API using `/api/state` endpoint
-2. fetches and sets data mappings using `/api/mappings` endpoint to replace ids with a corresponding name
+1. constantly consumes data from the simulation API using `/api/state` endpoint
+2. fetches and applies mappings from the simulation API using `/api/mappings` endpoint. Mappings are used to replace unique ids with a corresponding name.
 3. exposes an endpoint `/state` returning your application's internal state reflecting the current state of the ongoing simulation. The response should be in JSON format.
+
+
+__For detailed information about a specific endpoint check a dedicated section below.__
 
 #### Example response from your application should look like the following:
 ```json
@@ -117,3 +120,14 @@ id1:value1;id2:value2;idN:valueN...
 | 5        | Away Competitor ID    |
 | 6        | Sport Event Status ID |
 | 7        | Scores                | Score periods are delimited by `\|` character and have `period@home_score:away_score` format |
+
+
+### Environment variables
+
+| Name | Description | Default value |
+| ---- | ------ |---------------|
+| RTC_SIMULATION_API_PORT | A port to expose API to | 3000          |
+| RTC_SIMULATION_ROOT_PATH | A path prefix to expose endpoints | /api          |
+| RTC_SIMULATION_DURATION_MIN | A duration of a single simulation in minutes | 5             |
+
+
