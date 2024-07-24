@@ -6,6 +6,6 @@
 - `npm run start`
 
 ## .env
-PORT=3001
-API_URL=http://localhost:3000
-FETCH_INTERVAL=1000
+- PORT=3001
+- API_URL=http://localhost:3000
+- FETCH_INTERVAL=1000
